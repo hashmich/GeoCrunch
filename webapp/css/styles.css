@@ -1,0 +1,128 @@
+@font-face {
+  font-family: 'Glyphicons Halflings';
+  src: url("../fonts/bootstrap/glyphicons-halflings-regular.eot");
+  src: url("../fonts/bootstrap/glyphicons-halflings-regular.eot?#iefix") format("embedded-opentype"), url("../fonts/bootstrap/glyphicons-halflings-regular.woff") format("woff"), url("../fonts/bootstrap/glyphicons-halflings-regular.ttf") format("truetype"), url("../fonts/bootstrap/glyphicons-halflings-regular.svg#glyphicons-halflingsregular") format("svg"); }
+body {
+  color: #555;
+  background-color: #BFEBB0;
+  height: 97vh; }
+
+.strong, strong {
+  font-weight: bold; }
+
+#wrapper {
+  width: 1024px;
+  margin: 5px auto;
+  overflow: hidden;
+  border-radius: 6px;
+  background-color: #fff; }
+  #wrapper #header, #wrapper #footer, #wrapper #columns {
+    widht: 100%;
+    padding: 10px 20px; }
+    #wrapper #header h1, #wrapper #footer h1, #wrapper #columns h1 {
+      font-size: 25px;
+      margin: 0;
+      margin-top: 1px; }
+    #wrapper #header #logo, #wrapper #footer #logo, #wrapper #columns #logo {
+      float: left;
+      display: block;
+      margin-right: 10px; }
+    #wrapper #header:before, #wrapper #header:after, #wrapper #footer:before, #wrapper #footer:after, #wrapper #columns:before, #wrapper #columns:after {
+      content: " ";
+      display: table; }
+    #wrapper #header:after, #wrapper #footer:after, #wrapper #columns:after {
+      clear: both; }
+  #wrapper #header {
+    margin: 0 20px 10px;
+    padding-left: 2px;
+    border-bottom: 1px black dashed; }
+  #wrapper #columns {
+    padding-top: 0; }
+    #wrapper #columns .col {
+      float: left;
+      height: 400px; }
+    #wrapper #columns .left {
+      width: 400px;
+      overflow-y: auto;
+      overflow-x: auto;
+      position: relative;
+      margin-top: 50px; }
+      #wrapper #columns .left #filters {
+        position: fixed;
+        width: 400px;
+        margin-top: -50px;
+        margin-bottom: 5px;
+        padding-bottom: 5px;
+        border-bottom: 1px dashed #000;
+        z-index: 1000;
+        background-color: white; }
+        #wrapper #columns .left #filters button {
+          margin-bottom: 3px; }
+        #wrapper #columns .left #filters .well {
+          margin-bottom: 3px; }
+          #wrapper #columns .left #filters .well .btn-group {
+            margin-bottom: 10px; }
+      #wrapper #columns .left #directories .well {
+        margin-bottom: 3px; }
+      #wrapper #columns .left #directories ul {
+        padding-left: 0; }
+        #wrapper #columns .left #directories ul li {
+          list-style: none; }
+          #wrapper #columns .left #directories ul li span.item {
+            cursor: pointer;
+            display: inline-block;
+            padding: 1px 4px 0;
+            border-radius: 3px;
+            margin-bottom: 2px; }
+            #wrapper #columns .left #directories ul li span.item:hover {
+              text-decoration: underline; }
+            #wrapper #columns .left #directories ul li span.item.active {
+              background-color: yellow; }
+          #wrapper #columns .left #directories ul li span.item.directory {
+            font-weight: bold; }
+          #wrapper #columns .left #directories ul li span.glyphicon {
+            color: #2e6da4; }
+          #wrapper #columns .left #directories ul li span.glyphicon.glyphicon-file {
+            color: #aaa; }
+          #wrapper #columns .left #directories ul li > a {
+            color: inherit; }
+          #wrapper #columns .left #directories ul li ul {
+            padding-left: 10px; }
+    #wrapper #columns .right {
+      border-left: 1px dashed #000;
+      margin-left: 10px;
+      padding-left: 10px;
+      width: 564px; }
+      #wrapper #columns .right #map {
+        height: 400px;
+        display: flex;
+        justify-content: center;
+        align-items: center; }
+        #wrapper #columns .right #map #progress {
+          background-color: rgba(255, 255, 255, 0.7);
+          border-radius: 4px;
+          display: none;
+          height: 20px;
+          padding: 2px;
+          width: 200px;
+          z-index: 1000; }
+          #wrapper #columns .right #map #progress #progress-bar {
+            background-color: #76a6fc;
+            border-radius: 4px;
+            height: 100%;
+            width: 0; }
+        #wrapper #columns .right #map span.gotoTree {
+          cursor: pointer;
+          text-decoration: underline;
+          color: #888; }
+          #wrapper #columns .right #map span.gotoTree:hover {
+            color: #bbb; }
+        #wrapper #columns .right #map span.highlight {
+          background-color: yellow; }
+    #wrapper #columns:before, #wrapper #columns:after {
+      content: " ";
+      display: table; }
+    #wrapper #columns:after {
+      clear: both; }
+
+/*# sourceMappingURL=styles.css.map */

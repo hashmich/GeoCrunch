@@ -1,0 +1,166 @@
+
+// clearfix mixin
+@mixin clearfix() {
+  &:before,
+  &:after {
+    content: " ";
+    display: table;
+  }
+  &:after {
+    clear: both;
+  }
+}
+
+@font-face {
+    font-family: 'Glyphicons Halflings';
+    src: url('../fonts/bootstrap/glyphicons-halflings-regular.eot');
+    src: url('../fonts/bootstrap/glyphicons-halflings-regular.eot?#iefix') format('embedded-opentype'), url('../fonts/bootstrap/glyphicons-halflings-regular.woff') format('woff'), url('../fonts/bootstrap/glyphicons-halflings-regular.ttf') format('truetype'), url('../fonts/bootstrap/glyphicons-halflings-regular.svg#glyphicons-halflingsregular') format('svg');
+}
+
+
+body {
+	color: #555;
+	background-color: #BFEBB0;
+	height: 97vh;
+}
+
+.strong, strong {
+	font-weight: bold;
+}
+
+#wrapper {
+	width: 1024px;
+	margin: 5px auto;
+	overflow: hidden;
+	border-radius: 6px;
+	background-color: #fff;
+	
+	#header, #footer, #columns {
+		widht: 100%;
+		padding: 10px 20px;
+		h1 {
+			font-size: 25px;
+			margin: 0;
+			margin-top: 1px;
+		}
+		#logo {
+			float: left;
+			display: block;
+			margin-right: 10px;
+		}
+		@include clearfix;
+	}
+	#header {
+		margin: 0 20px 10px;
+		padding-left: 2px;
+		border-bottom: 1px black dashed;
+	}
+
+	#columns {
+		padding-top: 0;
+		.col {
+			float: left;
+			height: 400px;
+		}
+		.left {
+			width: 400px;
+			overflow-y: auto;
+			overflow-x: auto;
+			position: relative;
+			margin-top: 50px;
+			
+			#filters {
+				position: fixed;
+				width: 400px;
+				margin-top: -50px;
+				margin-bottom: 5px;
+				padding-bottom: 5px;
+				border-bottom: 1px dashed #000;
+				z-index: 1000;
+				background-color: white;
+				button {
+					margin-bottom: 3px;
+				}
+				.well {
+					margin-bottom: 3px;
+					.btn-group {
+						margin-bottom: 10px;
+					}
+				}
+			}
+		
+			#directories {
+				.well {
+					margin-bottom: 3px;
+				}
+				ul{
+					padding-left: 0;
+					li {
+						list-style: none;
+						span.item {
+							cursor: pointer;
+							display: inline-block;
+							padding: 1px 4px 0;
+							border-radius: 3px;
+							margin-bottom: 2px;
+							&:hover {text-decoration: underline;}
+							&.active {background-color: yellow;}
+						}
+						span.item.directory {font-weight: bold;}
+						span.glyphicon {color: #2e6da4;}
+						span.glyphicon.glyphicon-file {color: #aaa;}
+						> a {color: inherit;}
+						ul{
+							padding-left: 10px;
+						}
+					}
+				}
+			}
+		}
+		.right {
+			border-left: 1px dashed #000;
+			margin-left: 10px;
+			padding-left: 10px;
+			width: 564px;
+			
+			#map {
+				height: 400px;
+				
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				#progress {
+					background-color: rgba(255, 255, 255, 0.7);
+					border-radius: 4px;
+					display: none;
+					height: 20px;
+					padding: 2px;
+					width: 200px;
+					z-index: 1000;
+					#progress-bar {
+						background-color: #76a6fc;
+						border-radius: 4px;
+						height: 100%;
+						width: 0;
+					}
+				}
+				
+				span.gotoTree {
+					cursor: pointer;
+					text-decoration: underline;
+					color: #888;
+					&:hover {
+						color: #bbb;
+					}
+				}
+				span.highlight {
+					background-color: yellow;
+				}
+			}
+		}
+		@include clearfix;
+	}
+}
+
+
+

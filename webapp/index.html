@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+	    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+	    <meta name="viewport" content="width=device-width, initial-scale=1">
+		
+		<title>GeoCrunch Spatial Data Viewer</title>
+		
+		<link rel="stylesheet" href="bootstrap/bootstrap.min.css">
+		<link rel="stylesheet" type="text/css" href="leaflet/leaflet.css">
+		<link rel="stylesheet" type="text/css" href="leaflet/MarkerCluster.css">
+		<link rel="stylesheet" type="text/css" href="leaflet/MarkerCluster.Default.css">
+		<link rel="stylesheet" href="css/styles.css" />
+	</head>
+	<body>
+		<div id="wrapper">
+			<div id="header">
+				<img id="logo" alt="GeoCrunch logo" src="img/geocrunch.png" width="40px" height="29px" >
+				<h1>GeoCrunch Spatial Data Viewer</h1>
+			</div>
+			
+			<div id="columns">
+				<div id="leftcol" class="col left">
+					<div id="filters">
+						<button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#filterpane" aria-expanded="false" aria-controls="filterpane">
+						  Filters
+						</button>
+						<div class="collapse" id="filterpane">
+						  	<div class="well">
+						    	<p><strong>Show on map:</strong></p>
+						    	<div class="btn-group btn-group-xs" data-toggle="buttons">
+								  	<label class="btn btn-default">
+								    	<input type="radio" name="DEPTH" value="depth-item" autocomplete="off">Selected Item Only
+								  	</label>
+								  	<label class="btn btn-default active">
+								    	<input type="radio" name="DEPTH" value="depth-deep" autocomplete="off" checked>Selected Item & Subtree
+								  	</label>
+								</div>
+						    	
+						    	<div class="btn-group btn-group-xs" data-toggle="buttons">
+								  	<label class="btn btn-default">
+								    	<input type="radio" name="TYPE" value="type-files" autocomplete="off">Files
+								  	</label>
+								  	<label class="btn btn-default">
+								    	<input type="radio" name="TYPE" value="type-folders" autocomplete="off">Folders
+								  	</label>
+								  	<label class="btn btn-default active">
+								    	<input type="radio" name="TYPE" value="type-both" autocomplete="off" checked>Both
+								  	</label>
+								</div>
+						    	
+						    	<div class="checkbox">
+									<label><input type="checkbox" name="FILENAME_MENTION" checked="checked">File-/Foldername Place Mentions</label>
+								</div>
+								<div class="checkbox">
+									<label><input type="checkbox" name="METADATA_COORDINATE" checked="checked">Metadata Georeferences</label>
+								</div>
+								<div class="checkbox">
+									<label><input type="checkbox" name="METADATA_MENTION" checked="checked">Metadata Place Mentions</label>
+								</div>
+								<div class="checkbox">
+									<label><input type="checkbox" name="CONTENT_COORDINATE" checked="checked">Content Georeferences</label>
+								</div>
+								<div class="checkbox">
+									<label><input type="checkbox" name="CONTENT_MENTION" checked="checked">Content Place Mentions</label>
+								</div>
+						    </div>
+						</div>
+					</div>
+					
+					<div id="directories"></div>
+					
+				</div>
+				
+				<div id="rightcol" class="col right">
+					<div id="map">
+						<div id="progress"><div id="progress-bar"></div></div>
+					</div>
+				</div>
+			</div>
+			
+			<div id="footer">
+				&copy; 2017 Hendrik Schmeer
+			</div>
+		</div>
+		
+		<script type="text/javascript" src="js/jquery.js"></script>
+		<script type="text/javascript" src="bootstrap/bootstrap.min.js"></script>
+		<script type="text/javascript" src="leaflet/leaflet.js"></script>
+		<script type="text/javascript" src="leaflet/leaflet.markercluster.js"></script>
+		
+		<script src="js/filetree.js"></script>
+		
+	</body>
+</html>
