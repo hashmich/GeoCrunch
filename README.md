@@ -75,7 +75,7 @@ Please read the related bachelor_thesis.pdf to learn about the scientific backgr
 and concerns of the software development. 
 
 The Java sourcecode is available here: 
-[https://github.com/hashmich/geoCrunch.git]
+https://github.com/hashmich/geoCrunch.git
 
 
 

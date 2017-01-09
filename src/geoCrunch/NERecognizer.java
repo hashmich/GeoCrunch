@@ -66,24 +66,30 @@ public class NERecognizer {
 	
 	private void loadClassifier() {
 		if(this.language != null && this.language != "") {
-			String modelPath = "ner_models/" + this.language + ".model.gz";
-			if(this.core.nerClassifiers != null && this.core.nerClassifiers.containsKey(this.language)) {
-				this.classifier = this.core.nerClassifiers.get(this.language);
-			}else{
-				try{
-					this.classifier = CRFClassifier.getClassifier(modelPath);
-				}catch (ClassCastException | ClassNotFoundException | IOException e) {
-					e.printStackTrace();
-				}
-				// store the classifier
-				this.core.nerClassifiers.put(this.language, this.classifier);
-			}
-			
+			boolean lang = true;
 			switch(this.language) {
 				case "de": this.locationKey = "I-LOC"; break;
 				case "en": this.locationKey = "LOCATION"; break;
-				default: System.out.println("parseNE: language " + language + "is not supported");
+				default:
+					System.out.println("parseNE: language " + this.language + " is not supported");
+					lang = false;
 			}
+			
+			if(lang) {
+			String modelPath = "ner_models/" + this.language + ".model.gz";
+				if(this.core.nerClassifiers != null && this.core.nerClassifiers.containsKey(this.language)) {
+					this.classifier = this.core.nerClassifiers.get(this.language);
+				}else{
+					try{
+						this.classifier = CRFClassifier.getClassifier(modelPath);
+					}catch (ClassCastException | ClassNotFoundException | IOException e) {
+						e.printStackTrace();
+					}
+					// store the classifier
+					this.core.nerClassifiers.put(this.language, this.classifier);
+				}
+			}
+			
 		}else{
 			System.out.println("parseNE: language of " + this.name + " could not be detected");
 		}
