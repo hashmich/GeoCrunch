@@ -110,7 +110,7 @@ public class CollectionObject {
 			
 			this.fieldReader = new FieldDataReader(this.core, this.tika_metadata);
 			this.metadata_place = this.fieldReader.findPlacenames();
-			this.metadata_place_result = this.queryWebservices(this.metadata_place, GeoRefSource.METADATA_MENTION);
+			this.metadata_place_result = this.getGeoRef(this.metadata_place, GeoRefSource.METADATA_MENTION);
 			
 			this.metadata_coordinate = fieldReader.findCoordinate();
 			this.metadata_coordinate_result = CoordinateParser.parseCoordinate(this.metadata_coordinate, GeoRefSource.METADATA_COORDINATE);
@@ -197,7 +197,11 @@ public class CollectionObject {
 		return resultList;
 	}
 	
-	
+	/**
+	 * Retrieves a GeoRefObject from cache if available,
+	 * or issues a new geocoder request otherwise. 
+	 * Implements the boundingBox setting.
+	 */
 	private GeoRefObject getGeoRef(String name, GeoRefSource source) {
 		Object tmp = null;
 		// check the cache
@@ -208,22 +212,14 @@ public class CollectionObject {
 			
 			if(result != null) {
 				// check the bounding box, discard if outside the box
-				String[] boundingBox = this.core.getApplicationProps().getProperty("boundingBox", "").split(",\\s*");
-				if(boundingBox.length == 4) {
-					Double north, east, south, west;
-					north = Double.parseDouble(boundingBox[0]);
-					east = Double.parseDouble(boundingBox[1]);
-					south = Double.parseDouble(boundingBox[2]);
-					west = Double.parseDouble(boundingBox[3]);
-					if(result.lat > north || result.lat < south || result.lon > east || result.lon < west) {
-						this.core.nameCache.put(name.toLowerCase(), "out of box");
-						return null;
-					}
+				if(this.checkBoundingBox(result)) {
+					// store result in cache
+					this.core.nameCache.put(name.toLowerCase(), result);
+					return result;
+				}else{
+					this.core.nameCache.put(name.toLowerCase(), "out of box");
+					return null;
 				}
-				// store result in cache
-				this.core.nameCache.put(name.toLowerCase(), result);
-				return result;
-				
 			}else{
 				this.core.nameCache.put(name.toLowerCase(), "non-spatial");
 			}
@@ -236,12 +232,84 @@ public class CollectionObject {
 			else if(tmp instanceof GeoRefObject) {
 				// update the source
 				((GeoRefObject) tmp).geoRefSource = source;
-			}	
+			}
 		}
 		return (GeoRefObject) tmp;
 	}
 	
 	
+	private Boolean checkBoundingBox(GeoRefObject result) {
+		String[] boundingBox = this.core.getApplicationProps().getProperty("boundingBox", "").split(",\\s*");
+		if(boundingBox.length == 4) {
+			Double north, east, south, west;
+			north = Double.parseDouble(boundingBox[0]);
+			east = Double.parseDouble(boundingBox[1]);
+			south = Double.parseDouble(boundingBox[2]);
+			west = Double.parseDouble(boundingBox[3]);
+			if(result.lat > north || result.lat < south || result.lon > east || result.lon < west) {
+				return false;
+			}
+		}
+		return true;
+	}
+	
+	
+	/**
+	 * Retrieve a GeoRefObject for hierarchical place references.
+	 * Checks the cache, implements the boundingBox setting.
+	 */
+	private GeoRefObject getGeoRef(Place place, GeoRefSource source) {
+		if(place == null) return null;
+		Object tmp = null;
+		Map<String,String> map = place.getMap();
+		if(map == null) return null;
+		String name = null;
+		// build the full cache name string
+		for(Map.Entry<String,String> entry : map.entrySet()) {
+			if(entry.getValue() == null || entry.getValue().equals("")) continue;
+			if(name == null) name = "";
+			else name += ", ";
+			name += entry.getValue();
+		}
+		if(name == null) return null;
+		// check the cache
+		tmp = this.core.nameCache.get(name.toLowerCase());
+		if(tmp != null) {
+			// use the cached result
+			if(tmp instanceof String) {
+				return null;
+			}
+			else if(tmp instanceof GeoRefObject) {
+				// update the source
+				((GeoRefObject) tmp).geoRefSource = source;
+				return this.getGeoRef(name, source);
+			}
+		}else{
+			// query the webservices
+			GeoRefObject result = this.queryWebservices(place, source);
+			if(result != null) {
+				// check the bounding box, discard if outside the box
+				if(this.checkBoundingBox(result)) {
+					// store result in cache
+					this.core.nameCache.put(name.toLowerCase(), result);
+					return result;
+				}else{
+					this.core.nameCache.put(name.toLowerCase(), "out of box");
+					return null;
+				}
+			}else{
+				this.core.nameCache.put(name.toLowerCase(), "non-spatial");
+			}
+		}
+		
+		return null;
+	}
+	
+	/**
+	 * Retrieves a GeoRefObject for references coming from the NERecognizer as triples.
+	 * Implements the standard getGeoRef method. 
+	 * Updates the object with an excerpt. 
+	 */
 	private GeoRefObject getGeoRef(Triple<String, Integer, Integer> item, GeoRefSource source) {
 		Object tmp = null;
 		String name = this.body.substring(item.second(), item.third());

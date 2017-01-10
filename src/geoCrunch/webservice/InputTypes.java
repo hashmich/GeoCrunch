@@ -1,5 +1,5 @@
 package geoCrunch.webservice;
 
 public enum InputTypes {
-	Directoryname, Filename, Entitymention
+	DIRECTORY_NAME, FILE_NAME, ENTITY_MENTION
 }
