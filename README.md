@@ -74,7 +74,7 @@ Check the results in the GeoCrunch viewer, after the process has terminated.
 
 ## More information
 
-Please read the related bachelor_thesis.pdf to learn about the scientific backgrounds 
+Please read the related [bachelor_thesis.pdf](https://github.com/hashmich/GeoCrunch/blob/master/bachelor_thesis.pdf) to learn about the scientific backgrounds 
 and concerns of the software development. 
 
 The full application sourcecode is available here: 
