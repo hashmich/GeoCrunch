@@ -22,10 +22,11 @@ Extraction is performed on three levels:
 
 ## Getting started
 
-### See the analysis results of example data in the GeoCrunch viewer
+### See the analysis results of sample data in the GeoCrunch viewer
 
+Download and unpack the demo.zip package. 
 Start the GeoCrunch Viewer by opening the file 
-*geoCrunch_example/webapp/index.html*
+*demo/webapp/index.html*
 in a standard conform web browser (Safari might have problems). 
 An internet connection is required to render the map tiles. 
 
@@ -41,7 +42,7 @@ Select the filter options you would like to see.
 
 ### Create a spatial analysis of your own data collection
 
-Remove the contents of the folder GeoCrunch/webapp/data and insert 
+Remove the contents of the folder demo/webapp/data and insert 
 the data you wish to analyse. 
 There are restrictions on the amount of geocoding requests towards the 
 various services, thus it is recommended to analyze no more than 
@@ -74,8 +75,10 @@ Check the results in the GeoCrunch viewer, after the process has terminated.
 Please read the related bachelor_thesis.pdf to learn about the scientific backgrounds 
 and concerns of the software development. 
 
-The Java sourcecode is available here: 
-https://github.com/hashmich/geoCrunch.git
+The full application sourcecode is available here: 
+https://github.com/hashmich/GeoCrunch.git
+
+For further questions, send an email to the developer: mail@hendrikschmeer.de
 
 
 
