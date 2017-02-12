@@ -29,7 +29,7 @@ Extraction is performed on three levels:
 Download and unpack the [demo.zip](http://hendrikschmeer.de/files/demo.zip) package. 
 Start the GeoCrunch Viewer by opening the file 
 *demo/webapp/index.html*
-in a standard conform web browser (Safari might have problems). 
+in a standard conform web browser (I recommend Firefox. Safari was reported to have problems, Chrome cannot handle local file resources correctly). 
 An internet connection is required to render the map tiles. 
 
 Browse the collection tree by clicking on the items on the left, 
