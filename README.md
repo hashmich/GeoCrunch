@@ -26,7 +26,9 @@ Extraction is performed on three levels:
 
 ### See the analysis results of sample data in the GeoCrunch viewer
 
-Download and unpack the [demo.zip](http://hendrikschmeer.de/files/demo.zip) package. 
+You may want to visit the [GeoCrunch Viewer life demo](http://hendrikschmeer.de/GeoCrunch/). 
+
+Alternatively, download and unpack the [demo.zip](http://hendrikschmeer.de/files/demo.zip) package. 
 Start the GeoCrunch Viewer by opening the file 
 *demo/webapp/index.html*
 in a standard conform web browser (I recommend Firefox. Safari was reported to have problems, Chrome cannot handle local file resources correctly). 
