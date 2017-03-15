@@ -26,10 +26,12 @@ Extraction is performed on three levels:
 
 ### See the analysis results of sample data in the GeoCrunch viewer
 
-Download and unpack the demo.zip package. 
+You may want to visit the [GeoCrunch Viewer life demo](http://hendrikschmeer.de/GeoCrunch/). 
+
+Alternatively, download and unpack the [demo.zip](http://hendrikschmeer.de/files/demo.zip) package. 
 Start the GeoCrunch Viewer by opening the file 
 *demo/webapp/index.html*
-in a standard conform web browser (Safari might have problems). 
+in a standard conform web browser (I recommend Firefox. Safari was reported to have problems, Chrome cannot handle local file resources correctly). 
 An internet connection is required to render the map tiles. 
 
 Browse the collection tree by clicking on the items on the left, 
@@ -74,7 +76,7 @@ Check the results in the GeoCrunch viewer, after the process has terminated.
 
 ## More information
 
-Please read the related bachelor_thesis.pdf to learn about the scientific backgrounds 
+Please read the related [bachelor_thesis.pdf](https://github.com/hashmich/GeoCrunch/blob/master/bachelor_thesis.pdf) to learn about the scientific backgrounds 
 and concerns of the software development. 
 
 The full application sourcecode is available here: 
