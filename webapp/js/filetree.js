@@ -124,10 +124,10 @@ function addFileTreeHandlers() {
 function fitViewport() {
 	var viewportHeight = document.body.clientHeight;
 	var viewportWidth = document.body.clientWidth;
-	var headerHeight = 105;
-	$('#columns .col').css('height', viewportHeight - headerHeight);
-	$('#columns .col.left').css('height', viewportHeight - headerHeight - 50);
-	$('#map').css('height', viewportHeight - headerHeight);
+	var margins = $('#header').outerHeight() + $('#footer').outerHeight() + 15;
+	$('#columns .col').css('height', viewportHeight - margins);
+	$('#columns .col.left').css('height', viewportHeight - margins - 50);
+	$('#map').css('height', viewportHeight - margins);
 }
 
 function getTree() {

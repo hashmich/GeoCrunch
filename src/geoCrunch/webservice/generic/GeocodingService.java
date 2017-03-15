@@ -1,13 +1,18 @@
 package geoCrunch.webservice.generic;
 
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
 import java.net.URI;
+import java.net.URLEncoder;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.client.RestTemplate;
@@ -53,11 +58,21 @@ public class GeocodingService {
 
 	
 	public JsonNode query() {
-		UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl(url);
+		//UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl(url);
+		StringBuilder sb = new StringBuilder();
+		sb.append(url);
+		int i = 0;
 		for (Map.Entry<String, String> entry : this.requestMap.entrySet()) {
-			builder.queryParam(entry.getKey(), entry.getValue());
+			//builder.queryParam(entry.getKey(), entry.getValue());
+			if(i == 0) sb.append("?");
+			else sb.append("&");
+			sb.append(entry.getKey() + "=" + entry.getValue());
+			i++;
 		}
-		URI uri = builder.build().toUri();
+		
+		//URI uri = builder.build(true).toUri();
+		String uri = sb.toString();
+		System.out.println(uri);
 		ResponseEntity<String> response = restTemplate.getForEntity(uri, String.class);
 		
 		if(!response.getStatusCode().equals(HttpStatus.OK)) return null;

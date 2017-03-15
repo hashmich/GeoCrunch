@@ -19,6 +19,8 @@ Extraction is performed on three levels:
 2. metadata is examined for coordinates or place names
 3. analysis of file content bodies on .csv (coordinates) or .pdf (place names)
 
+![GeoCrunch screenshot](/viewer.png)
+
 
 ## Getting started
 
