@@ -58,7 +58,6 @@ public class GeocodingService {
 
 	
 	public JsonNode query() {
-		//UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl(url);
 		StringBuilder sb = new StringBuilder();
 		sb.append(url);
 		int i = 0;
@@ -72,7 +71,6 @@ public class GeocodingService {
 		
 		//URI uri = builder.build(true).toUri();
 		String uri = sb.toString();
-		System.out.println(uri);
 		ResponseEntity<String> response = restTemplate.getForEntity(uri, String.class);
 		
 		if(!response.getStatusCode().equals(HttpStatus.OK)) return null;
