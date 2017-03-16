@@ -164,7 +164,7 @@
         </copy>
         <copy file="${dir.buildfile}/README.md" tofile="${dir.jarfile}/README.md"/>
         <copy file="${dir.buildfile}/LICENSE.md" tofile="${dir.jarfile}/LICENSE.md"/>
-        <copy file="${dir.buildfile}/starter.sh" tofile="${dir.jarfile}/starter.bat"/>
+        <copy file="${dir.buildfile}/starter.bat" tofile="${dir.jarfile}/starter.bat"/>
         <copy file="${dir.buildfile}/starter.sh" tofile="${dir.jarfile}/starter.sh"/>
         <chmod file="${dir.jarfile}/starter.sh" perm="ugo+rx"/>
     </target>
